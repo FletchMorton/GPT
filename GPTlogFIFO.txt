@@ -1,0 +1,103 @@
+https://chat.openai.com/share/2c91d661-9c04-45e8-974a-8d446ec45ce2
+
+
+Use Python to generate me a FIFO process scheduling algorithm which simulates the scheduling of multiple processes and calculates the turnaround time, response time, and wait time for each
+
+Can you make the output simulate elapsing time, and print what action is happening when? For example: Time 0: 1 arrived, Time 0: 1 selected (burst 10), Time 2:  2 arrived, and so on?
+
+> My example was processed surprisingly well. GPT did exactly what I asked here; proper format and everything
+
+Can you get rid of the results output now since we have the simulation log instead?
+
+Can you add arrival time to the simulation log?
+
+What part of the code did you just change?
+
+> Didn't work. I wanted to see what exactly was even changed
+
+Can you add completion time to the simulation log too, in addition to the arrival and selected times?
+
+Can you change the arrival time to reflect the time at which process_queue.append(processes.pop(0)) is called, and the selected time to be when current_process = process_queue.pop(0) is executed?
+
+> Brute forcing code innovation
+
+Can you have the simulation log just say idle for each time unit after the final process has finished?
+
+Can you include a "runfor" variable set to 20 in main, and set the simulation to run for "runfor" time units?
+
+If the simulation terminates before a process finishes running, can you output "'pid' did not finish"
+
+Can you output that after the simulation is complete, not during
+
+Can you alter the simulation to output the arrival time when current_time = current_process.arrival_time
+
+> More brute forcing
+
+Why is the simulation log outputting process 2's arrival at time unit 10 instead of time unit 2?
+
+> Doesn't work
+
+On line 30, change "if current_time == current_process.arrival_time:" to "if current_time == current_process.start_time:"
+
+> Here is where I had to start actually combing through the code to see where the generation had misinterpreted what I asked, or was just plain wrong
+
+can you show me the entire code again?
+
+Can you edit the simulation so that processes can arrive while another process is being worked on?
+
+Can you change the simulation to run incrementally, one time unit at a time?
+
+> A lot of trouble here
+
+This code does not have the simulation running incrementally because line 36 allows it to jump multiple time units. Can you fix this?
+
+What piece of the code did you just change?
+
+> ChatGPT said it removed the line of code, yet it then proceeded to regenerate that exact same block of code
+
+Identical code is located on line 35, perpetuating the problem
+
+> And then it did that again
+
+The code is still there. Please rework the simulation so that for every one time unit, the process progresses in completion, and once enough time units have passed to sufficiently cover that process's burst time, only then the process is flagged as finished.
+
+> This complete respecification of directive proved very successful. GPT finally understood what I wanted, yet the implementation came with new problems
+
+Instead of decrementing the burst time itself, can you store a separate variable which starts equal to the burst time and then gets decremented each time unit?
+
+> Burst time was being decremented, when it should be a static value. Upon requesting the creation of this new variable, chatGPT fixed the code satisfactorally
+
+Can you change the code so that processes are only selected once the previous process has finished
+
+can you set the simulation to run for 30 time units
+
+When the simulation ends, can you output "Finished at time 'runfor'" if all processes finished within the time frame, or "'pid' did not finish" for each process that could not finish?
+
+Can you set runfor = 20
+
+what is the output for the current iteration of our code?
+
+> This was just an expiriment I was curious about. Could chatGPT, without any of the proper tools, formulate an output based solely on referencing its own math? No. This failed miserably.
+
+If the simulation ends before a process finishes, can you update that process's finish variable to None?
+
+Can you undo that change?
+
+> I realized that this was already implemented elsewhere in the code, and that the feature was just being misused
+
+Why does this code have process 3 finish at time unit 23 and process 4 get selected at time unit 23, when the simulation should be terminated at time unit 20?
+
+Can you output the pid values of the processes that could not finish running before the termination of the simulation?
+
+What piece of code did you just change?
+
+Processes 3 and 4 could not finished before the simulation was terminated, yet neither are output as unfinished. Why is that?
+
+> I stopped getting meaningful results....
+
+
+
+
+Student Intervention
+-----------------------------------------------------
+Changed how processes were considered finished/unfinished. Uses arrays and appends/pops them as needed

@@ -1,0 +1,5 @@
+https://chat.openai.com/share/38df0ad9-78f3-4477-b4ac-8a43e33d6861
+
+Use Python to generate me a function that takes a .txt file as input and reads its content, recognizing each time on of the following directives are issued "processcount, runfor, use, quantum, process, name, arrival, end" and gets the int, char or string that follows. If a '#' is encountered, ignore any characters that followed until the next newline
+
+> Impressive. I think adding process detection and end directive detection will be easier to do manually than through chatGPT

@@ -1,0 +1,11 @@
+https://chat.openai.com/share/2c91d661-9c04-45e8-974a-8d446ec45ce2
+
+Can you make a similar code for a Round Robin process scheduling algorithm instead of a Pre-emptive SJF (Shortest Job First) process scheduling algorithm?
+
+> This was actually impressive right off the bat
+
+Can change the code to make sure that if a process ends, the next process is selected and beings executing in the next time unit, and not the unit in which the first process completed?
+
+> This might have not even been necessary, as I think I was viewing the data incorrectly. However, the resulting generation was satisfactory regardless
+
+> I was actually happy enough with this. Will just require some minor fixes and formatting 
