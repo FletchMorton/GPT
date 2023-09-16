@@ -13,8 +13,8 @@ class Process:
 def fifo_scheduler(processes, runfor):
     current_time = 0
     process_queue = []
-    finished_processes = []
-    unfinished_processes = []
+    finished_processes = [] # Student Created
+    unfinished_processes = [] # Student Created
     current_process = None  # Initialize to None
 
     while (current_time < runfor or process_queue or processes) and current_time <= runfor:
@@ -23,8 +23,8 @@ def fifo_scheduler(processes, runfor):
             new_process = processes.pop(0)
             new_process.arrival_time = current_time
             process_queue.append(new_process)
-            unfinished_processes.append(new_process)
-            print(f"Time {current_time}: {new_process.pid} arrived")
+            unfinished_processes.append(new_process) # Student Created
+            print(f"Time {current_time}: {new_process.pid} arrived") # Edited for formatting
 
         if current_process is None and process_queue:
             current_process = process_queue.pop(0)
@@ -39,17 +39,19 @@ def fifo_scheduler(processes, runfor):
                 current_process.remaining_time -= 1
                 current_time += 1
             else:
-                unfinished_processes.pop(0)
+                unfinished_processes.pop(0) # Student Created
                 current_process.finish_time = current_time
-                current_process.wait_time = current_process.start_time - current_process.arrival_time
+                # Deleted wait_time, as it was unnecessary in this scheduler
                 current_process.turnaround_time = current_process.finish_time - current_process.arrival_time
                 print(f"Time {current_time}: {current_process.pid} completed")
-                finished_processes.append(current_process)
+                finished_processes.append(current_process) # Student Created
                 current_process = None  # Set to None to select the next process
 
         else:
             print(f"Time {current_time}: Idle")
             current_time += 1  # Idle CPU time when no process is in the queue
+
+    # Student Intervention: I reworked the method by which processes were considered finished/unfinished. As such, code was removed here
 
     print(f"Finished at time {runfor}\n")
 
