@@ -1,3 +1,8 @@
+# PA1 - The GPT Scheduler
+# scheduler-gpt.py
+# Fletcher Morton
+
+
 #imports
 import sys
 import pathlib
